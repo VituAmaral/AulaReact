@@ -44,7 +44,23 @@ enviaDados = async (serie) => {
     }
 
 }
-        
+
+deleta = async (id) => {
+    const series = this.state.series
+    const params = {
+        method: 'DELETE',
+    }
+    const retorno = await
+    fetch('http://localhost:3000/series/' + id, params)
+
+    if(retorno.status == 204) {
+        this.setState({
+            series:series.filter((serie) => {
+                return serie.id !== id
+            })
+        })
+    }
+}
     render() {
         return(
             <div className="container">
@@ -54,7 +70,10 @@ enviaDados = async (serie) => {
                     </div>
 
                     <div className="col-md-8">
-                        <TableSeries series={this.state.series}/>
+                        <TableSeries 
+                            series={this.state.series}
+                            deleta={this.deleta}
+                        />
                     </div>
                 </div>
             </div>            

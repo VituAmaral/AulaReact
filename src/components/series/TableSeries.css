@@ -1,0 +1,22 @@
+.segura_card-serie {
+    max-width: 150px;
+    min-width: 150px;
+    margin: 5px;
+}
+
+.segura_card-serie:hover {
+    border: solid 5px black;
+    transition: scale(1.1) 
+}
+
+.segura_card-serie .card-footer, .card-header {
+    padding: 5px;
+    font-size: 12px;
+}
+
+.card-body-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+}
