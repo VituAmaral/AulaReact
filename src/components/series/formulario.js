@@ -28,29 +28,34 @@ enviaDados = (e) => {
 
     render() {
         return(
-          <div>
-              <form method="post" onSubmit={this.enviaDados}>
-                <div className="form">
-                    <label htmlFor="nome">Nome</label>
-                    
-                    <input type="text" id="nome" name="nome" value={this.state.nome} onChange={this.inputHandler}/>
-                    
-                    <label htmlFor="lancamento">Ano de lançamento</label>
-                    
-                    <input type="text" id="lancamento" name="ano_lancamento" value={this.state.ano_lancamento} onChange={this.inputHandler}/>
-                    
-                    <label htmlFor="temporadas">Temporadas</label>
-                    
-                    <input type="text" id="temporadas" name="temporadas" value={this.state.temporadas} onChange={this.inputHandler}/>
-                    
-                    <label htmlFor="sinopse">Sinopse</label>
-                    
-                    <textarea id="sinopse" name="sinopse" value={this.state.sinopse} onChange={this.inputHandler}>
-                      
-                    </textarea>
-                    <button type="submit">Salvar</button>
-                </div>
-              </form>
+          <div className="card">
+            <div className="card-header">
+                <h5>Cadastro de Series</h5>
+            </div>
+            <div className="card-body">
+                <form method="post" onSubmit={this.enviaDados}>
+                    <div className="form-group">
+                        <label htmlFor="nome">Nome</label>
+                        
+                        <input className="form-control mb-1" type="text" id="nome" name="nome" value={this.state.nome} onChange={this.inputHandler}/>
+                        
+                        <label htmlFor="lancamento">Ano de lançamento</label>
+                        
+                        <input className="form-control mb-1" type="text" id="lancamento" name="ano_lancamento" value={this.state.ano_lancamento} onChange={this.inputHandler}/>
+                        
+                        <label htmlFor="temporadas">Temporadas</label>
+                        
+                        <input className="form-control mb-1" type="text" id="temporadas" name="temporadas" value={this.state.temporadas} onChange={this.inputHandler}/>
+                        
+                        <label htmlFor="sinopse">Sinopse</label>
+                        
+                        <textarea className="form-control mb-1" id="sinopse" name="sinopse" value={this.state.sinopse} onChange={this.inputHandler}>
+                            
+                        </textarea>
+                        <button className="btn-success form-control mt-2" type="submit">Salvar</button>
+                    </div>
+                </form>
+              </div>
           </div>
         )
     }
