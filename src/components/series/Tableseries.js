@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './TableSeries.css'
+import PubSub from 'pubsub-js';
+import './TableSeries.css';
 
 
 const ListaSeries = (props) => {
@@ -30,7 +31,11 @@ const ListaSeries = (props) => {
                                     props.deleta(serie.id)}}>
                                     DELETE
                             </button>
-                            <button className="btn btn-outline-warning btn-sm ml-1 mt-2">EDITAR</button>
+                            <button className="btn btn-outline-warning btn-sm ml-1 mt-2" onClick={() => {
+                                PubSub.publish('editing', serie)
+                            }}>
+                                EDITAR
+                            </button>
                         </div>
                     </div>
                 </div>
