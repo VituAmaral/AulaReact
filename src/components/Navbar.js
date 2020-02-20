@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { signOut } from '../services/auth-service'
 
 export default class Navbar extends Component {
+
+	signOut = (e) => {
+		signOut()
+	
+	}
 
 	render() {
 		return (
@@ -24,8 +30,11 @@ export default class Navbar extends Component {
 						</li>
 					</ul>
 					<form className="form-inline my-2 my-lg-0">
-						<input className="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" />
-						<button className="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+					
+						<button className="btn btn-outline-danger my-2 my-sm-0" type="submit"
+						onClick={this.signOut}>
+							Sair
+						</button>
 					</form>
 				</div>
 			</nav>
