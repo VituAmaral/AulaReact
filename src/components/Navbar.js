@@ -1,15 +1,20 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { signOut } from '../services/auth-service'
 
 export default class Navbar extends Component {
 
-	signOut = (e) => {
-		signOut()
-	
+	constructor(){
+		super()
+		this.state = {
+			signOut: false
+		}
 	}
 
 	render() {
+		if(this.state.signOut){
+			return <Redirect to='/login'/>
+		}
 		return (
 			<nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
 				<Link className="navbar-brand" to="/">SERIES</Link>
@@ -29,13 +34,15 @@ export default class Navbar extends Component {
 							<Link className="nav-link" to="/autores">Autores</Link>
 						</li>
 					</ul>
-					<form className="form-inline my-2 my-lg-0">
-					
-						<button className="btn btn-outline-danger my-2 my-sm-0" type="submit"
-						onClick={this.signOut}>
-							Sair
+					<button
+						className="btn btn-outline-danger my-2 my-sm-0"
+						onClick={() => {
+							signOut()
+							this.setState({signOut: true})
+						}}
+						type="submit">
+						Sair
 						</button>
-					</form>
 				</div>
 			</nav>
 		)

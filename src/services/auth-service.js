@@ -1,7 +1,24 @@
+import { doPublicRequest } from './baseapi-service'
+
+const RESOURCE = 'auth/'
+
 const TOKEN_KEY = '@Series:token'
 
-export const signIn = (usuario) => {
-    localStorage.setItem(TOKEN_KEY,JSON.stringify(usuario))
+export const signIn = async (usuario) => {
+    try{
+        const retorno = 
+            await doPublicRequest(RESOURCE + 'autenticar/','POST',usuario)
+        console.log(retorno)
+        if(retorno.ok){
+            usuario = await retorno.json()
+            localStorage.setItem(TOKEN_KEY,JSON.stringify(usuario))
+        }
+        return retorno
+    }catch(erro){
+        console.log(erro)
+        return erro
+    }
+    
 }
 
 export const signOut = () => {
@@ -14,6 +31,6 @@ export const isSignedIn = () => {
 }
 
 export const getToken = () => {
-    const usuario = localStorage.getItem(TOKEN_KEY)
+    const usuario = JSON.parse(localStorage.getItem(TOKEN_KEY))
     return usuario.token
 }
